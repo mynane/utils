@@ -1,0 +1,20 @@
+name: NPM-PUBLISH
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm install
+      # 这里替换为你要执行的命令
+      - run: npm run dist
+      # 这里使用了JS-DevTools/npm-publish这个action
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
