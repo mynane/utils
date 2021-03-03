@@ -1,1 +1,3 @@
-console.log(123123);
+function Test() {}
+
+export default Test;
