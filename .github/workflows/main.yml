@@ -18,6 +18,10 @@ jobs:
       - run: npm run test
       # 这里替换为你要执行的命令
       - run: npm run dist
+      # 版本升级
+      - run: npm version patch
+      # 提交代码
+      - run: git push
       # 这里使用了JS-DevTools/npm-publish这个action
       - uses: JS-DevTools/npm-publish@v1
         with:
