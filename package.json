@@ -7,14 +7,10 @@
   "scripts": {
     "dist": "tsc",
     "lint": "eslint src --ext .ts",
-    "test": "mocha --reporter spec --require ts-node/register tests/**/*.test.ts"
+    "test": "mocha --reporter spec --require ts-node/register tests/**/*.test.ts",
+    "precommit": "npm run lint && npm run test && npm run patch"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test && npm run patch"
-    }
-  },
-  "keywords": [],
+  "keywords": ["utils", "npm"],
   "author": "”石进华“",
   "license": "ISC",
   "devDependencies": {
