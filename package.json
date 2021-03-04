@@ -9,7 +9,7 @@
     "lint": "eslint src --ext .ts",
     "test": "mocha --reporter spec --require ts-node/register tests/**/*.test.ts",
     "patch": "npm version patch",
-    "precommit": "npm run patch && npm run lint && npm run test",
+    "precommit": "npm run lint && npm run test",
     "prepare": "husky install"
   },
   "keywords": [
