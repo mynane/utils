@@ -1,3 +1,1 @@
-export default () => {
-  return "123";
-};
+export * from "./shared";
