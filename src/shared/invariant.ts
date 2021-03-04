@@ -6,6 +6,8 @@
  *
  */
 
+import { TBasicType } from "../types";
+
 /**
  * Use invariant() to assert state which your program assumes to be true.
  *
@@ -16,7 +18,6 @@
  * The invariant message will be stripped in production, but the invariant
  * will remain to ensure logic does not differ in production.
  */
-export type basicType = string | number | undefined | null | boolean;
 
 export const INVARIANT_LACK_OF_FORMAT_PARAMETER_ERROR = `Minified exception occurred; use the non-minified dev environment 
 for the full error message and additional helpful warnings.`;
@@ -24,12 +25,12 @@ for the full error message and additional helpful warnings.`;
 export function invariant(
   condition: boolean,
   format?: string,
-  a?: basicType,
-  b?: basicType,
-  c?: basicType,
-  d?: basicType,
-  e?: basicType,
-  f?: basicType
+  a?: TBasicType,
+  b?: TBasicType,
+  c?: TBasicType,
+  d?: TBasicType,
+  e?: TBasicType,
+  f?: TBasicType
 ) {
   if (!condition) {
     let error;
