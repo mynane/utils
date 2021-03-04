@@ -1,8 +1,12 @@
 name: NPM-PUBLISH
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
+# on:
+#   push:
+#     branches:
+#       - master
 jobs:
   publish:
     runs-on: ubuntu-latest
