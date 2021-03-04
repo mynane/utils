@@ -1,9 +1,16 @@
 import { underlineToUpperCase } from "../shared";
 import { TObjectAny } from "../types";
 
+/**
+ * auto Object to ts interface data
+ * @param moduleName interface name
+ * @param comment comment comment
+ * @param _data origin data
+ * @param isHide show or hide
+ */
 export function autoInterface(
-  suffix: string,
-  message: string,
+  moduleName: string,
+  comment: string,
   _data: TObjectAny,
   isHide: boolean = true
 ) {
@@ -12,7 +19,7 @@ export function autoInterface(
   }
   const result1: string[] = [];
   const names: any = {};
-  parse(_data, suffix, true);
+  parse(_data, moduleName, true);
 
   function cutRepeate({ item, n, res, _names, d }: any) {
     const values = Object.keys(item).map((map) => {
@@ -20,18 +27,18 @@ export function autoInterface(
     });
     const keys = Object.keys(item);
     const temp = `${keys.join("")}-${values.join("")}`;
-    const current = _names[`${suffix}${n}`];
+    const current = _names[`${moduleName}${n}`];
     if (current) {
       if (current.temp === temp) {
         current.count += 1;
       } else {
         current.count += 1;
-        parse(item, `${suffix}${n}${current.count}`);
-        return `${suffix}${n}${current.count}`;
+        parse(item, `${moduleName}${n}${current.count}`);
+        return `${moduleName}${n}${current.count}`;
       }
     } else {
-      parse(item, `${suffix}${n}`);
-      _names[`${suffix}${n}`] = {
+      parse(item, `${moduleName}${n}`);
+      _names[`${moduleName}${n}`] = {
         count: 1,
         temp,
       };
@@ -55,7 +62,7 @@ export function autoInterface(
         if (item[0] instanceof Object) {
           const n = underlineToUpperCase(d);
           const r = cutRepeate({ item: item[0], n, res, names, d });
-          res[d] = r ? `${r}[]` : `${suffix}${n}[]`;
+          res[d] = r ? `${r}[]` : `${moduleName}${n}[]`;
         } else {
           let type = null;
           for (let i = 0; i < item.length; i++) {
@@ -81,7 +88,7 @@ export function autoInterface(
           names,
           d,
         });
-        res[d] = r ? r : `${suffix}${n}`;
+        res[d] = r ? r : `${moduleName}${n}`;
       } else {
         res[d] = typeof item;
       }
@@ -126,5 +133,5 @@ export function autoInterface(
 
     format(data, name, isfirst);
   }
-  return `// ${suffix}${message}\n\n${result1.join("\n")}`;
+  return `// ${moduleName}${comment}\n\n${result1.join("\n")}`;
 }
