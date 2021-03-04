@@ -1,6 +1,6 @@
 {
   "name": "mynane_utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "tools",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "dist": "tsc",
     "lint": "eslint src --ext .ts",
     "test": "mocha --reporter spec --require ts-node/register tests/**/*.test.ts",
-    "patch": "npm version patch",
+    "patch": "npm version patch && git push && git push tags",
     "precommit": "npm run lint && npm run test",
     "prepare": "husky install"
   },
