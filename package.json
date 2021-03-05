@@ -1,6 +1,6 @@
 {
   "name": "mynane_utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "tools",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
