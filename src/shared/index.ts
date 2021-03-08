@@ -3,3 +3,4 @@ export * from "./types";
 export * from "./random";
 export * from "./firstLetterToUpperCase";
 export * from "./underlineToUpperCase";
+export * from "./delay";
